@@ -1,0 +1,19 @@
+name: 功能建議 / Feature request
+description: 建議新功能或改進 / Suggest a new feature or improvement
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        需要新題型或版面時，請用自己編寫的例子說明，**不要貼上真實考試題目**。
+        When asking for a new question layout, describe it with your own example. **Do not post real exam questions.**
+  - type: textarea
+    id: need
+    attributes:
+      label: 想解決的問題 / What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 建議的做法 / Proposed solution

@@ -1,0 +1,35 @@
+name: 問題回報 / Bug report
+description: 程式出錯或行為不符預期 / Something does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **請不要貼上真實考試題目或截圖。** 需要範例時，請用示範題庫或自己編寫的題目重現問題。
+        **Do not post real exam questions or screenshots.** Reproduce the problem with the sample exam or your own questions.
+  - type: textarea
+    id: what
+    attributes:
+      label: 發生了什麼？ / What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 重現步驟 / Steps to reproduce
+      placeholder: |
+        1. 開啟示範題庫
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 預期結果 / Expected result
+  - type: textarea
+    id: info
+    attributes:
+      label: 「關於 → 複製資訊」的內容 / Output of "About → Copy Info"
+      render: text
+    validations:
+      required: true

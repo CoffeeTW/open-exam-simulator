@@ -1,0 +1,532 @@
+{
+  "format": "open-exam-simulator/exam",
+  "schemaVersion": "1.0",
+  "id": "exam-demo",
+  "title": "示範題庫",
+  "number": "DEMO-001",
+  "version": "1.0",
+  "passingScore": 70,
+  "timeLimitMinutes": 0,
+  "description": "示範各題型的編輯、作答與評分。兩題「草稿範本」沒有正解，維持草稿，不會出題。",
+  "showDescription": true,
+  "sections": [
+    {
+      "id": "sec1",
+      "name": "基本題型"
+    },
+    {
+      "id": "sec2",
+      "name": "新增題型"
+    },
+    {
+      "id": "sec3",
+      "name": "常見題型"
+    },
+    {
+      "id": "sec4",
+      "name": "系列題"
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "case1",
+      "name": "示範案例：早餐店",
+      "text": "小明開了一家早餐店，每天早上 6 點開門。\n需求：\n1. 開門前要完成備料。\n2. 客人點餐後先收款，再製作餐點。"
+    }
+  ],
+  "questions": [
+    {
+      "sectionId": "sec1",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-single",
+        "type": "multiple_choice",
+        "status": "ready",
+        "title": "操作示範：單選題",
+        "prompt": "下列哪一個數字是質數？",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "11 只能被 1 和自己整除。",
+        "selectMode": "single",
+        "shuffle": true,
+        "checkNumberSelected": false,
+        "options": [
+          {
+            "id": "o1",
+            "text": "4"
+          },
+          {
+            "id": "o2",
+            "text": "9"
+          },
+          {
+            "id": "o3",
+            "text": "11"
+          },
+          {
+            "id": "o4",
+            "text": "15"
+          }
+        ],
+        "correctAnswer": [
+          "o3"
+        ]
+      }
+    },
+    {
+      "sectionId": "sec1",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-multiple",
+        "type": "multiple_choice",
+        "status": "ready",
+        "title": "操作示範：複選題",
+        "prompt": "下列哪些數字是偶數？（選兩個）",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "能被 2 整除的是偶數。",
+        "selectMode": "multiple",
+        "shuffle": false,
+        "checkNumberSelected": true,
+        "options": [
+          {
+            "id": "o1",
+            "text": "2"
+          },
+          {
+            "id": "o2",
+            "text": "3"
+          },
+          {
+            "id": "o3",
+            "text": "8"
+          },
+          {
+            "id": "o4",
+            "text": "13"
+          }
+        ],
+        "correctAnswer": [
+          "o1",
+          "o3"
+        ]
+      }
+    },
+    {
+      "sectionId": "sec1",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-fill",
+        "type": "fill_in_blank",
+        "status": "ready",
+        "title": "操作示範：填空題",
+        "prompt": "一週有幾天？請以阿拉伯數字或中文作答。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "一週有 7 天。",
+        "acceptedAnswers": [
+          "7",
+          "七"
+        ],
+        "caseSensitive": false,
+        "ignoreMultipleSpaces": true,
+        "trimResponse": true
+      }
+    },
+    {
+      "sectionId": "sec2",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-dropdown",
+        "type": "dropdown_multi",
+        "status": "ready",
+        "title": "操作示範：兩個獨立下拉欄位",
+        "prompt": "請完成下列算式。這是用來驗證作答及評分的示範題。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+          {
+            "id": "sum",
+            "label": "2 + 3 =",
+            "options": [
+              {
+                "id": "o1",
+                "text": "4"
+              },
+              {
+                "id": "o2",
+                "text": "5"
+              },
+              {
+                "id": "o3",
+                "text": "6"
+              }
+            ],
+            "correctAnswer": "o2",
+            "explanation": ""
+          },
+          {
+            "id": "product",
+            "label": "3 × 4 =",
+            "options": [
+              {
+                "id": "o1",
+                "text": "7"
+              },
+              {
+                "id": "o2",
+                "text": "12"
+              },
+              {
+                "id": "o3",
+                "text": "15"
+              }
+            ],
+            "correctAnswer": "o2",
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec2",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-yes-no",
+        "type": "yes_no_matrix",
+        "status": "ready",
+        "title": "操作示範：逐列 Yes／No",
+        "prompt": "請逐列判斷以下敘述。每列只能選 Yes 或 No，三列互相獨立。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+          {
+            "id": "s1",
+            "text": "2 + 2 = 4。",
+            "correctAnswer": true,
+            "explanation": ""
+          },
+          {
+            "id": "s2",
+            "text": "5 是偶數。",
+            "correctAnswer": false,
+            "explanation": ""
+          },
+          {
+            "id": "s3",
+            "text": "10 大於 3。",
+            "correctAnswer": true,
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec2",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "image-dropdown",
+        "type": "dropdown_multi",
+        "status": "draft",
+        "title": "草稿範本：多欄位下拉選單",
+        "prompt": "草稿範本（尚未設定正解）：公司有兩個共用資料夾，請為每個資料夾選出適當的備份頻率。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+          {
+            "id": "f1",
+            "label": "資料夾 A（每天更新）",
+            "options": [
+              {
+                "id": "o1",
+                "text": "每小時"
+              },
+              {
+                "id": "o2",
+                "text": "每天"
+              },
+              {
+                "id": "o3",
+                "text": "每週"
+              },
+              {
+                "id": "o4",
+                "text": "每月"
+              }
+            ],
+            "correctAnswer": null,
+            "explanation": ""
+          },
+          {
+            "id": "f2",
+            "label": "資料夾 B（每月更新）",
+            "options": [
+              {
+                "id": "o1",
+                "text": "每天"
+              },
+              {
+                "id": "o2",
+                "text": "每週"
+              },
+              {
+                "id": "o3",
+                "text": "每月"
+              },
+              {
+                "id": "o4",
+                "text": "不需備份"
+              }
+            ],
+            "correctAnswer": null,
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec2",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "image-yes-no",
+        "type": "yes_no_matrix",
+        "status": "draft",
+        "title": "草稿範本：逐列 Yes／No 判斷",
+        "prompt": "草稿範本（尚未設定正解）：辦公室有一台共用印表機，兩台電腦都已連上同一個網路。請逐列判斷下列敘述。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+          {
+            "id": "s1",
+            "text": "兩台電腦都能透過網路使用共用印表機。",
+            "correctAnswer": null,
+            "explanation": ""
+          },
+          {
+            "id": "s2",
+            "text": "印表機關機時，電腦仍然可以把文件印出來。",
+            "correctAnswer": null,
+            "explanation": ""
+          },
+          {
+            "id": "s3",
+            "text": "新增第三台電腦時，只要連上同一個網路並安裝驅動程式即可使用印表機。",
+            "correctAnswer": null,
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec3",
+      "caseStudyId": "case1",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-build-list",
+        "type": "build_list",
+        "status": "ready",
+        "title": "操作示範：排序題",
+        "prompt": "依案例研究的需求，把客人點餐到取餐的步驟依序排入答案區（有一個多餘的選項）。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "點餐 → 收款 → 製作 → 交付。",
+        "choicesTitle": "選項",
+        "answerTitle": "答案區",
+        "reorderOnly": false,
+        "orderMatters": true,
+        "choices": [
+          {
+            "id": "c1",
+            "text": "製作餐點"
+          },
+          {
+            "id": "c2",
+            "text": "收款"
+          },
+          {
+            "id": "c3",
+            "text": "交給客人"
+          },
+          {
+            "id": "c4",
+            "text": "關店打烊"
+          },
+          {
+            "id": "c5",
+            "text": "客人點餐"
+          }
+        ],
+        "correctAnswer": [
+          "c5",
+          "c2",
+          "c1",
+          "c3"
+        ]
+      }
+    },
+    {
+      "sectionId": "sec3",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-drag-drop",
+        "type": "drag_drop",
+        "status": "ready",
+        "title": "操作示範：拖放題",
+        "prompt": "把每種動物拖到牠的主要棲地。",
+        "scoring": {
+          "mode": "per_part",
+          "maxScore": 2
+        },
+        "explanation": "",
+        "reuseSources": false,
+        "sources": [
+          {
+            "id": "v1",
+            "text": "海洋"
+          },
+          {
+            "id": "v2",
+            "text": "沙漠"
+          },
+          {
+            "id": "v3",
+            "text": "極地"
+          },
+          {
+            "id": "v4",
+            "text": "雨林"
+          }
+        ],
+        "targets": [
+          {
+            "id": "t1",
+            "label": "企鵝：",
+            "correctAnswer": "v3",
+            "explanation": ""
+          },
+          {
+            "id": "t2",
+            "label": "駱駝：",
+            "correctAnswer": "v2",
+            "explanation": ""
+          },
+          {
+            "id": "t3",
+            "label": "海豚：",
+            "correctAnswer": "v1",
+            "explanation": ""
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec3",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-hot-area",
+        "type": "hot_area",
+        "status": "ready",
+        "title": "操作示範：熱區題",
+        "prompt": "下圖有紅、綠、藍三個方塊，請點選綠色與藍色方塊。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "",
+        "background": "img1",
+        "areas": [
+          {
+            "id": "a1",
+            "x": 20,
+            "y": 30,
+            "w": 80,
+            "h": 60
+          },
+          {
+            "id": "a2",
+            "x": 120,
+            "y": 30,
+            "w": 80,
+            "h": 60
+          },
+          {
+            "id": "a3",
+            "x": 220,
+            "y": 30,
+            "w": 80,
+            "h": 60
+          }
+        ],
+        "correctAnswer": [
+          "a2",
+          "a3"
+        ],
+        "images": [
+          {
+            "id": "img1",
+            "mime": "image/png",
+            "data": "iVBORw0KGgoAAAANSUhEUgAAAUAAAAB4CAIAAAAMrLyJAAAB0UlEQVR42u3TQQ0AIAwEQeRUCSKQiCa8QIKFvprO5hRcMuNKKttwgQSwJIAlASwBLAlgSQBLAlgCWBLAkgCWAJYEsCSAJQEsASwJYEkASwJYAlgSwJIAlgCWBLAkgCUBLAEsCWBJAEtKAz4RrZb5KvZstdRX67QawAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDPCVVDaAJYAlASwJYAlgSQBLAlgSwBLAkgCWBLAEsCSAJQEsCWAJYEkASwJYEsASwJIAlgSwBLAkgCUBLAlgCWBJAEsCWNLvASoSWKUN7QUAAAAAAElFTkSuQmCC"
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "sec4",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-goal-1",
+        "type": "goal_solution",
+        "status": "ready",
+        "title": "操作示範：解決方案評估題",
+        "prompt": "公司的檔案伺服器 FS1 上有一個共用資料夾 Reports。\n目標：業務部的使用者可以讀取 Reports 中的檔案，但不能修改。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "有效權限取共用權限與 NTFS 權限中較嚴格者，兩者都是讀取，因此只能讀取。",
+        "solution": "在 Reports 的共用權限與 NTFS 權限中，都只授與「業務部」群組讀取權限。",
+        "noReturn": false,
+        "correctAnswer": true
+      }
+    },
+    {
+      "sectionId": "sec4",
+      "question": {
+        "schemaVersion": "1.0",
+        "id": "demo-goal-2",
+        "type": "goal_solution",
+        "status": "ready",
+        "title": "操作示範：解決方案評估題",
+        "prompt": "公司的檔案伺服器 FS1 上有一個共用資料夾 Reports。\n目標：業務部的使用者可以讀取 Reports 中的檔案，但不能修改。",
+        "scoring": {
+          "mode": "all_or_nothing",
+          "maxScore": 1
+        },
+        "explanation": "Administrators 擁有完整控制權限，使用者可以修改檔案，不符合目標。",
+        "solution": "把「業務部」群組加入 FS1 的本機 Administrators 群組。",
+        "noReturn": false,
+        "correctAnswer": false
+      }
+    }
+  ]
+}

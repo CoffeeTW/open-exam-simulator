@@ -1,0 +1,25 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Build output
+build/
+dist/
+*.spec
+build-log.txt
+*.zip
+
+# Local data (answer history, settings, test output)
+history.db
+settings.json
+test-results.txt
+.oes-*.tmp
+_to_delete/
+
+# Your own question banks stay local; only the sample bank is published
+*.oes
+!samples/*.oes
+
+# Tools
+.ruff_cache/

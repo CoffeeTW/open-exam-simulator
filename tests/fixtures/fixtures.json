@@ -1,0 +1,186 @@
+{
+    "imageDropdown": {
+        "schemaVersion": "1.0",
+        "id": "image-dropdown",
+        "type": "dropdown_multi",
+        "status": "draft",
+        "title": "草稿範本：多欄位下拉選單",
+        "prompt": "草稿範本（尚未設定正解）：公司有兩個共用資料夾，請為每個資料夾選出適當的備份頻率。",
+        "scoring": {
+            "mode": "all_or_nothing",
+            "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+            {
+                "id": "f1",
+                "label": "資料夾 A（每天更新）",
+                "options": [
+                    {
+                        "id": "o1",
+                        "text": "每小時"
+                    },
+                    {
+                        "id": "o2",
+                        "text": "每天"
+                    },
+                    {
+                        "id": "o3",
+                        "text": "每週"
+                    },
+                    {
+                        "id": "o4",
+                        "text": "每月"
+                    }
+                ],
+                "correctAnswer": null,
+                "explanation": ""
+            },
+            {
+                "id": "f2",
+                "label": "資料夾 B（每月更新）",
+                "options": [
+                    {
+                        "id": "o1",
+                        "text": "每天"
+                    },
+                    {
+                        "id": "o2",
+                        "text": "每週"
+                    },
+                    {
+                        "id": "o3",
+                        "text": "每月"
+                    },
+                    {
+                        "id": "o4",
+                        "text": "不需備份"
+                    }
+                ],
+                "correctAnswer": null,
+                "explanation": ""
+            }
+        ]
+    },
+    "imageYesNo": {
+        "schemaVersion": "1.0",
+        "id": "image-yes-no",
+        "type": "yes_no_matrix",
+        "status": "draft",
+        "title": "草稿範本：逐列 Yes／No 判斷",
+        "prompt": "草稿範本（尚未設定正解）：辦公室有一台共用印表機，兩台電腦都已連上同一個網路。請逐列判斷下列敘述。",
+        "scoring": {
+            "mode": "all_or_nothing",
+            "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+            {
+                "id": "s1",
+                "text": "兩台電腦都能透過網路使用共用印表機。",
+                "correctAnswer": null,
+                "explanation": ""
+            },
+            {
+                "id": "s2",
+                "text": "印表機關機時，電腦仍然可以把文件印出來。",
+                "correctAnswer": null,
+                "explanation": ""
+            },
+            {
+                "id": "s3",
+                "text": "新增第三台電腦時，只要連上同一個網路並安裝驅動程式即可使用印表機。",
+                "correctAnswer": null,
+                "explanation": ""
+            }
+        ]
+    },
+    "demoDropdown": {
+        "schemaVersion": "1.0",
+        "id": "demo-dropdown",
+        "type": "dropdown_multi",
+        "status": "ready",
+        "title": "操作示範：兩個獨立下拉欄位",
+        "prompt": "請完成下列算式。這是用來驗證作答及評分的示範題。",
+        "scoring": {
+            "mode": "all_or_nothing",
+            "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+            {
+                "id": "sum",
+                "label": "2 + 3 =",
+                "options": [
+                    {
+                        "id": "o1",
+                        "text": "4"
+                    },
+                    {
+                        "id": "o2",
+                        "text": "5"
+                    },
+                    {
+                        "id": "o3",
+                        "text": "6"
+                    }
+                ],
+                "correctAnswer": "o2",
+                "explanation": ""
+            },
+            {
+                "id": "product",
+                "label": "3 × 4 =",
+                "options": [
+                    {
+                        "id": "o1",
+                        "text": "7"
+                    },
+                    {
+                        "id": "o2",
+                        "text": "12"
+                    },
+                    {
+                        "id": "o3",
+                        "text": "15"
+                    }
+                ],
+                "correctAnswer": "o2",
+                "explanation": ""
+            }
+        ]
+    },
+    "demoYesNo": {
+        "schemaVersion": "1.0",
+        "id": "demo-yes-no",
+        "type": "yes_no_matrix",
+        "status": "ready",
+        "title": "操作示範：逐列 Yes／No",
+        "prompt": "請逐列判斷以下敘述。每列只能選 Yes 或 No，三列互相獨立。",
+        "scoring": {
+            "mode": "all_or_nothing",
+            "maxScore": 1
+        },
+        "explanation": "",
+        "items": [
+            {
+                "id": "s1",
+                "text": "2 + 2 = 4。",
+                "correctAnswer": true,
+                "explanation": ""
+            },
+            {
+                "id": "s2",
+                "text": "5 是偶數。",
+                "correctAnswer": false,
+                "explanation": ""
+            },
+            {
+                "id": "s3",
+                "text": "10 大於 3。",
+                "correctAnswer": true,
+                "explanation": ""
+            }
+        ]
+    }
+}
