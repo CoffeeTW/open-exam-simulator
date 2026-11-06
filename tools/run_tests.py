@@ -30,7 +30,11 @@ def hard_exit(code: int) -> None:
     sys.stderr.flush()
     if sys.platform == "win32":
         import ctypes
-        kernel32 = ctypes.windll.kernel32
+        from ctypes import wintypes
+        kernel32 = ctypes.WinDLL("kernel32")
+        kernel32.GetCurrentProcess.restype = wintypes.HANDLE      # 64 位元程式的 handle 不能當成 int 傳遞
+        kernel32.TerminateProcess.argtypes = (wintypes.HANDLE, wintypes.UINT)
+        kernel32.TerminateProcess.restype = wintypes.BOOL
         kernel32.TerminateProcess(kernel32.GetCurrentProcess(), code)
     os._exit(code)
 
