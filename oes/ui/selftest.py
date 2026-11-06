@@ -123,3 +123,18 @@ def run_self_test(output: str) -> int:
     lines.append("RESULT: " + ("PASS" if ok else "FAIL"))
     Path(output).write_text("\n".join(lines) + "\n", encoding="utf-8")
     return 0 if ok else 1
+
+
+def hard_exit(code: int) -> None:
+    """直接結束程序（打包版的 --self-test 使用）：無視窗模式下卸載 Qt 程式庫可能發生存取違規，讓結束代碼失準。"""
+    sys.stdout.flush() if sys.stdout else None
+    sys.stderr.flush() if sys.stderr else None
+    if sys.platform == "win32":
+        import ctypes
+        from ctypes import wintypes
+        kernel32 = ctypes.WinDLL("kernel32")
+        kernel32.GetCurrentProcess.restype = wintypes.HANDLE
+        kernel32.TerminateProcess.argtypes = (wintypes.HANDLE, wintypes.UINT)
+        kernel32.TerminateProcess.restype = wintypes.BOOL
+        kernel32.TerminateProcess(kernel32.GetCurrentProcess(), code)
+    os._exit(code)

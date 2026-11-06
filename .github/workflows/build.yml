@@ -1,5 +1,6 @@
 # 每次 push／pull request：在 Windows 上執行全部測試。
 # 推送 v* 標籤（例如 v0.4.0）：另外打包 EXE、執行自我檢查，並建立 GitHub Release 上傳 zip 與 SHA-256。
+# 手動執行（Actions → Run workflow）：只打包並上傳成 artifact，不建立 Release，用來事先確認打包沒問題。
 name: Test and build
 
 on:
@@ -34,7 +35,7 @@ jobs:
           exit $code
 
   release:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
     needs: test
     runs-on: windows-latest
     permissions:
@@ -48,6 +49,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt "pyinstaller>=6.10"
       - name: Check version matches tag
+        if: startsWith(github.ref, 'refs/tags/v')
         shell: pwsh
         run: |
           $version = python -c "import oes; print(oes.__version__)"
@@ -72,7 +74,8 @@ jobs:
           $process = Start-Process -FilePath "dist/OpenExamSimulator/OpenExamSimulator.exe" `
             -ArgumentList "--self-test", "`"$result`"" -Wait -PassThru
           Get-Content $result -Encoding UTF8
-          if ($process.ExitCode -ne 0) { throw "Self-test failed" }
+          Write-Host "Self-test exit code: $($process.ExitCode)"
+          if (-not (Select-String -Path $result -Pattern "RESULT: PASS" -Quiet)) { throw "Self-test failed" }
       - name: Package zip and checksum
         shell: pwsh
         run: |
@@ -82,7 +85,16 @@ jobs:
           $hash = (Get-FileHash dist/OpenExamSimulator-win64.zip -Algorithm SHA256).Hash.ToLower()
           "$hash  OpenExamSimulator-win64.zip" | Out-File -Encoding ascii dist/OpenExamSimulator-win64.zip.sha256
           Get-Content dist/OpenExamSimulator-win64.zip.sha256
+      - name: Upload package (manual run)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: OpenExamSimulator-win64
+          path: |
+            dist/OpenExamSimulator-win64.zip
+            dist/OpenExamSimulator-win64.zip.sha256
       - name: Publish release
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: |

@@ -12,8 +12,8 @@ def main(argv: list[str] | None = None) -> int:
     if "--self-test" in argv:  # 打包後的自我檢查：OpenExamSimulator.exe --self-test 結果檔
         index = argv.index("--self-test")
         output = argv[index + 1] if index + 1 < len(argv) else "selftest.txt"
-        from .selftest import run_self_test
-        return run_self_test(output)
+        from .selftest import hard_exit, run_self_test
+        hard_exit(run_self_test(output))
     try:
         from PySide6.QtWidgets import QApplication
     except ImportError:
