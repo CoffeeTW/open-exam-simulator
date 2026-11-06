@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install -r requirements.txt
       - name: Run tests
-        run: python -m unittest discover -s tests -t . -v
+        run: python tools/run_tests.py -v
 
   release:
     if: startsWith(github.ref, 'refs/tags/v')

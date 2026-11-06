@@ -20,7 +20,7 @@ echo [2/6] Running tests ...
 echo [2/6] tests >> %LOG%
 set QT_QPA_PLATFORM=offscreen
 set PYTHONIOENCODING=utf-8
-"%PY%" -m unittest discover -s tests -t . >> %LOG% 2>&1
+"%PY%" tools\run_tests.py >> %LOG% 2>&1
 if errorlevel 1 goto :fail
 set QT_QPA_PLATFORM=
 

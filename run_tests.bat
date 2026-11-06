@@ -8,7 +8,7 @@ if not exist ".venv\Scripts\python.exe" (
 )
 set QT_QPA_PLATFORM=offscreen
 set PYTHONIOENCODING=utf-8
-".venv\Scripts\python.exe" -m unittest discover -s tests -t . -v > test-results.txt 2>&1
+".venv\Scripts\python.exe" tools\run_tests.py -v > test-results.txt 2>&1
 set RESULT=%errorlevel%
 type test-results.txt
 echo.
