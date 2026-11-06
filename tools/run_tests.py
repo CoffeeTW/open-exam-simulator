@@ -2,8 +2,9 @@
 
 用法（於專案根目錄）：python tools/run_tests.py [-v]
 
-測試結束後直接以 os._exit 結束，略過 Python 關閉時對 Qt 物件的清理：在 Windows 的無視窗（offscreen）
-模式下，這個清理偶爾會在測試全部通過之後才出錯，讓結束代碼變成非 0。
+測試結束後直接結束程序，略過 Python 與 Qt 的關閉清理：在 Windows 的無視窗（offscreen）模式下，
+卸載 Qt 程式庫時可能發生存取違規，讓測試全部通過卻回傳非 0 的結束代碼。
+Windows 上以 TerminateProcess 結束（不執行 DLL 卸載），其他系統用 os._exit。
 """
 import faulthandler
 import os
@@ -24,8 +25,15 @@ def main() -> int:
     return 0 if result.wasSuccessful() else 1
 
 
-if __name__ == "__main__":
-    code = main()
+def hard_exit(code: int) -> None:
     sys.stdout.flush()
     sys.stderr.flush()
+    if sys.platform == "win32":
+        import ctypes
+        kernel32 = ctypes.windll.kernel32
+        kernel32.TerminateProcess(kernel32.GetCurrentProcess(), code)
     os._exit(code)
+
+
+if __name__ == "__main__":
+    hard_exit(main())
